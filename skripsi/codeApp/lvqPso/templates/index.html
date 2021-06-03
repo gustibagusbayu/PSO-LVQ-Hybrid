@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Input Section -->
+      <div class="col-md-6">
+        <div class="card">
+          <h5 class="card-header">Input Parameter</h5>
+          <div class="card-body">
+            <form method="POST" action="{% url 'index' %}">
+              <h5>Parameter PSO</h5>
+              <hr>
+              {% csrf_token %}
+            <!-- maximum epoch pso -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="maxIterasi" class="form-label">Maximum Iterasi</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="maxIterasi" name="maxIterasi" {% if maxIterasi %} value="{{ maxIterasi }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end maximum epoch -->
+            <!-- jumlah partikel -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="partikel" class="form-label">Jumlah Partikel</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="partikel" name="partikel" {% if partikel %} value="{{ partikel }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end jumlah partikel -->
+            <!-- koefisien W -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="koefisien_w" class="form-label">Koefisien W</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="koefisien_w" name="koefisien_w" {% if koefisien_w %} value="{{ koefisien_w }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end koefisien w -->
+            <!-- koefisien c1 -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="koefisien_c1" class="form-label">Koefisien C1</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="koefisien_c1" name="koefisien_c1" {% if koefisien_c1 %} value="{{ koefisien_c1 }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end koefisien c1 -->
+            <!-- koefisien c2 -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="koefisien_c2" class="form-label">Koefisien C2</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="koefisien_c2" name="koefisien_c2" {% if koefisien_c2 %} value="{{ koefisien_c2 }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end koefisien c2 -->
+              <hr>
+              <h5>Parameter LVQ</h5>
+              <hr>
+            <!-- maximum epoch lvq -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="epoch_lvq" class="form-label">Maximum Epoch</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="epoch_lvq" name="epoch_lvq" {% if epoch_lvq %} value="{{ epoch_lvq }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end maximum epoch -->
+            <!-- Learning Rate -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="learning_rate" class="form-label">Learning Rate(α)</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="learning_rate" name="learning_rate" {% if learning_rate %} value="{{ learning_rate }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end Learning Rate -->
+            <!-- Pengurang (α) -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="pengurang_lr" class="form-label">Pengurang (α)</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="pengurang_lr" name="pengurang_lr" {% if pengurang_lr %} value="{{ pengurang_lr }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end Pengurang (α) -->
+            <!-- Minimum (α) -->
+              <div class="mb-0">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <label for="minimum_lr" class="form-label">Minimum (α)</label>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control h-75" id="minimum_lr" name="minimum_lr" {% if minimum_lr %} value="{{ minimum_lr }}" {% endif %} required>
+                  </div>
+                </div>
+              </div>
+            <!-- end Minimum (α) -->
+            <button class="btn btn-dark train mt-2" type="submit">Train</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- END Input Section -->
+      <!-- Result Section -->
+      <div class="col-md-6">
+        <div class="card">
+          <h5 class="card-header">Results Testing</h5>
+          <div class="card-body">
+            <h5>Metode LVQ</h5>
+            <hr>
+            <!-- Tidak Penyakit Jantung -->
+            <div class="mb-0">
+              <div class="row">
+                <div class="col-sm-5">
+                  <label for="not_disease_lvq" class="form-label">Tidak Penyakit Jantung (0)</label>
+                </div>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control h-75" id="not_disease_lvq" name="not_disease_lvq" {% if not_disease_lvq %} value="{{ not_disease_lvq }}" {% endif %}>
+                </div>
+              </div>
+            </div>
+            <!-- end Tidak Penyakit Jantung -->
+            <!-- Penyakit Jantung -->
+            <div class="mb-0">
+              <div class="row">
+                <div class="col-sm-5">
+                  <label for="disease_lvq" class="form-label">Penyakit Jantung (1)</label>
+                </div>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control h-75" id="disease_lvq" name="disease_lvq" {% if disease_lvq %} value="{{ disease_lvq }}" {% endif %}>
+                </div>
+              </div>
+            </div>
+            <!-- end Penyakit Jantung -->
+            <!-- Nilai Akurasi -->
+            <div class="mb-0">
+              <div class="row">
+                <div class="col-sm-5">
+                  <label for="accuracy_lvq" class="form-label">Nilai Akurasi</label>
+                </div>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control h-75" id="accuracy_lvq" name="accuracy_lvq" {% if accuracy_lvq %} value="{{ accuracy_lvq }}" {% endif %}>
+                </div>
+              </div>
+            </div>
+            <!-- end Nilai Akurasi -->
+            <hr>
+            <h5>Metode LVQ-PSO</h5>
+            <hr>
+            <!-- Tidak Penyakit Jantung -->
+            <div class="mb-0">
+              <div class="row">
+                <div class="col-sm-5">
+                  <label for="not_disease_psoLvq" class="form-label">Tidak Penyakit Jantung (0)</label>
+                </div>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control h-75" id="not_disease_psoLvq" name="not_disease_psoLvq" {% if not_disease_psoLvq %} value="{{ not_disease_psoLvq }}" {% endif %}>
+                </div>
+              </div>
+            </div>
+            <!-- end Tidak Penyakit Jantung -->
+            <!-- Penyakit Jantung -->
+            <div class="mb-0">
+              <div class="row">
+                <div class="col-sm-5">
+                  <label for="disease_psoLvq" class="form-label">Penyakit Jantung (1)</label>
+                </div>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control h-75" id="disease_psoLvq" name="disease_psoLvq" {% if disease_psoLvq %} value="{{ disease_psoLvq }}" {% endif %}>
+                </div>
+              </div>
+            </div>
+            <!-- end Penyakit Jantung -->
+            <!-- Nilai Akurasi -->
+            <div class="mb-0">
+              <div class="row">
+                <div class="col-sm-5">
+                  <label for="accuracy_psoLvq" class="form-label">Nilai Akurasi</label>
+                </div>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control h-75" id="accuracy_psoLvq" name="accuracy_psoLvq" {% if accuracy_psoLvq %} value="{{ accuracy_psoLvq }}" {% endif %}>
+                </div>
+              </div>
+            </div>
+            <!-- end Nilai Akurasi -->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-dark float-end mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Results Detail
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Results Detail</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">No.</th>
+                          <th scope="col">Kelas Sebenarnya</th>
+                          <th scope="col">Klasifikasi LVQ</th>
+                          <th scope="col">Klasifikasi PSO-LVQ</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for label, class_lvq, class_psoLvq in classification_list %}
+                        <tr>
+                          <th scope="row">{{ forloop.counter }}.</th>
+                          <td>{{ label }}</td>
+                          <td>{{ class_lvq }}</td>
+                          <td>{{ class_psoLvq }}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                          <th colspan="2">Jumlah Klasifikasi Benar</th>
+                          <td>{{ count_lvq }}</td>
+                          <td>{{ count_psoLvq }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end modal -->
+          </div>
+        </div>
+      </div>
+      <!-- END Result Section -->
+    </div>
+  </div>
+</main>
+
+{% endblock %}

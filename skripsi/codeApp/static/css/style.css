@@ -1,0 +1,62 @@
+/* navabar */
+.navbar{
+    color: white;
+}
+.nav-item{
+    padding-left: 50px;
+    float: right;
+}
+/* end navbar section */
+
+/* input section */
+label{
+    font-size: medium;
+}
+.card > h5{
+    font-size: medium;
+}
+form > h5{
+    font-size: medium;
+    margin-bottom: -8px;
+    margin-top: -8px;
+}
+.train{
+    float: right;
+}
+/* end input section */
+
+/* result section */
+.card-body > h5{
+    font-size: medium;
+    margin-bottom: -8px;
+    margin-top: -8px;
+}
+.scrollAll{
+    overflow-x: scroll;
+    overflow-y: scroll;
+    height: 400px;
+}
+.data_train, .data_test{
+    margin-top: 115px !important;
+    margin-left: 20px;
+    float: right;
+}
+/* end result section */
+/* testing section */
+.testing > h5, label{
+    font-size: small;
+}
+.test_btn{
+    float: right;
+}
+/* end testing section */
+.parameter > h5{
+    font-size: medium;
+}
+.kelas{
+    margin-top: -10px;
+}
+/* table */
+th, td{
+    text-align: center;
+}

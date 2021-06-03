@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <div class="container mt-4">
+    <div class="row">
+      <!-- testing form -->
+      <div class="col-md-7 testing_form">
+        <div class="card">
+            <h5 class="card-header">Input Data Testing</h5>
+          <div class="card-body testing">
+            <form action="{% url 'user' %}" method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                <!-- input age -->
+                  <div class="mb-0">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="text" class="form-control h-50" id="age" name="age" {% if age %} value="{{ age }}" {% endif %} required>
+                  </div>
+                <!-- end input age -->
+                <!-- input sex -->
+                  <div class="mb-0">
+                    <label for="sex" class="form-label">Sex</label>
+                    <input type="text" class="form-control h-50" id="sex" name="sex" {% if sex %} value="{{ sex }}" {% endif %} required>
+                  </div>
+                <!-- end input sex -->
+                <!-- input cp -->
+                  <div class="mb-0">
+                    <label for="cp" class="form-label">Chess Pain Type (cp)</label>
+                    <input type="text" class="form-control h-50" id="cp" name="cp" {% if cp %} value="{{ cp }}" {% endif %} required>
+                  </div>
+                <!-- end input cp -->
+                <!-- input trestbps -->
+                  <div class="mb-0">
+                    <label for="trestbps" class="form-label">Resting Blood Pressure (trestbps)</label>
+                    <input type="text" class="form-control h-50" id="trestbps" name="trestbps" {% if trestbps %} value="{{ trestbps }}" {% endif %} required>
+                  </div>
+                <!-- end input trestbps -->
+                <!-- input restecg -->
+                  <div class="mb-0">
+                    <label for="restecg" class="form-label">Resting Electrocardiographic (restecg)</label>
+                    <input type="text" class="form-control h-50" id="restecg" name="restecg" {% if restecg %} value="{{ restecg }}" {% endif %} required>
+                  </div>
+                <!-- end input restecg -->
+                <!-- input thalach -->
+                <div class="mb-0">
+                    <label for="thalach" class="form-label">Maximum Heart Rate Achived (thalach)</label>
+                    <input type="text" class="form-control h-50" id="thalach" name="thalach" {% if thalach %} value="{{ thalach }}" {% endif %} required>
+                  </div>
+                  <!-- end input thalach -->
+                </div>
+                <div class="col-md-6">
+                  
+                  <!-- input exang -->
+                  <div class="mb-0">
+                    <label for="exang" class="form-label">Exercise Induced Angina (exang)</label>
+                    <input type="text" class="form-control h-50" id="exang" name="exang" {% if exang %} value="{{ exang }}" {% endif %} required>
+                  </div>
+                  <!-- end input exang -->
+                  <!-- input oldpeak -->
+                  <div class="mb-0">
+                    <label for="oldpeak" class="form-label">Depression Induced By Exercise (oldpeak)</label>
+                    <input type="text" class="form-control h-50" id="oldpeak" name="oldpeak" {% if oldpeak %} value="{{ oldpeak }}" {% endif %} required>
+                  </div>
+                  <!-- end input oldpeak -->
+                  <!-- input slope -->
+                  <div class="mb-0">
+                    <label for="slope" class="form-label">Slope Of The Peak Exercise (slope)</label>
+                    <input type="text" class="form-control h-50" id="slope" name="slope" {% if slope %} value="{{ slope }}" {% endif %} required>
+                  </div>
+                  <!-- end input slope -->
+                  <!-- input ca -->
+                  <div class="mb-0">
+                    <label for="ca" class="form-label">Number Of Major Vessels (ca)</label>
+                    <input type="text" class="form-control h-50" id="ca" name="ca" {% if ca %} value="{{ ca }}" {% endif %} required>
+                  </div>
+                  <!-- end input ca -->
+                  <!-- input thal -->
+                  <div class="mb-0">
+                    <label for="thal" class="form-label">Thal</label>
+                    <input type="text" class="form-control h-50" id="thal" name="thal" {% if thal %} value="{{ thal }}" {% endif %} required>
+                  </div>
+                  <!-- end input thal -->
+                  <button class="btn btn-dark test_btn mt-4" type="submit">Test</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+        <!-- end testing form -->
+        <!-- result classification -->
+      <div class="col-md-5">
+        <div class="card">
+          <h5 class="card-header">Hasil Klasifikasi</h5>
+          <div class="card-body">
+            <h5>Klasifikasi Metode LVQ</h5>
+            <hr>
+            <p class="kelas">Kelas : {{ result_lvq }}</p>
+            <hr>
+            <h5>Klasifikasi Metode PSO-LVQ</h5>
+            <hr>
+            <p class="kelas">Kelas : {{ result_psoLvq }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- end result classification -->
+    </div>
+  </div>
+</main>
+    
+{% endblock %}

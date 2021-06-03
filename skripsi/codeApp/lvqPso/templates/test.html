@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <div class="container mt-4">
+    <div class="row">
+        <!-- testing form -->
+        <div class="col-md-6 testing_form">
+          <div class="card">
+              <h5 class="card-header">Input Data Testing</h5>
+            <div class="card-body testing">
+              <form action="{% url 'test' %}" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6">
+                  <!-- input age -->
+                    <div class="mb-0">
+                      <label for="age" class="form-label">Age</label>
+                      <input type="text" class="form-control h-50" id="age" name="age" {% if age %} value="{{ age }}" {% endif %} required>
+                    </div>
+                  <!-- end input age -->
+                  <!-- input sex -->
+                    <div class="mb-0">
+                      <label for="sex" class="form-label">Sex</label>
+                      <input type="text" class="form-control h-50" id="sex" name="sex" {% if sex %} value="{{ sex }}" {% endif %} required>
+                    </div>
+                  <!-- end input sex -->
+                  <!-- input cp -->
+                    <div class="mb-0">
+                      <label for="cp" class="form-label">Chess Pain Type (cp)</label>
+                      <input type="text" class="form-control h-50" id="cp" name="cp" {% if cp %} value="{{ cp }}" {% endif %} required>
+                    </div>
+                  <!-- end input cp -->
+                  <!-- input trestbps -->
+                    <div class="mb-0">
+                      <label for="trestbps" class="form-label">Resting Blood Pressure (trestbps)</label>
+                      <input type="text" class="form-control h-50" id="trestbps" name="trestbps" {% if trestbps %} value="{{ trestbps }}" {% endif %} required>
+                    </div>
+                  <!-- end input trestbps -->
+                  <!-- input restecg -->
+                    <div class="mb-0">
+                      <label for="restecg" class="form-label">Resting Electrocardiographic (restecg)</label>
+                      <input type="text" class="form-control h-50" id="restecg" name="restecg" {% if restecg %} value="{{ restecg }}" {% endif %} required>
+                    </div>
+                  <!-- end input restecg -->
+                  <!-- input thalach -->
+                    <div class="mb-0">
+                        <label for="thalach" class="form-label">Maximum Heart Rate Achived (thalach)</label>
+                        <input type="text" class="form-control h-50" id="thalach" name="thalach" {% if thalach %} value="{{ thalach }}" {% endif %} required>
+                    </div>
+                <!-- end input thalach -->
+                  </div>
+                  <div class="col-md-6">
+                    
+                  <!-- input exang -->
+                    <div class="mb-0">
+                      <label for="exang" class="form-label">Exercise Induced Angina (exang)</label>
+                      <input type="text" class="form-control h-50" id="exang" name="exang" {% if exang %} value="{{ exang }}" {% endif %} required>
+                    </div>
+                  <!-- end input exang -->
+                  <!-- input oldpeak -->
+                    <div class="mb-0">
+                      <label for="oldpeak" class="form-label">Depression Induced By Exercise (oldpeak)</label>
+                      <input type="text" class="form-control h-50" id="oldpeak" name="oldpeak" {% if oldpeak %} value="{{ oldpeak }}" {% endif %} required>
+                    </div>
+                  <!-- end input oldpeak -->
+                  <!-- input slope -->
+                    <div class="mb-0">
+                      <label for="slope" class="form-label">Slope Of The Peak Exercise (slope)</label>
+                      <input type="text" class="form-control h-50" id="slope" name="slope" {% if slope %} value="{{ slope }}" {% endif %} required>
+                    </div>
+                  <!-- end input slope -->
+                  <!-- input ca -->
+                    <div class="mb-0">
+                      <label for="ca" class="form-label">Number Of Major Vessels (ca)</label>
+                      <input type="text" class="form-control h-50" id="ca" name="ca" {% if ca %} value="{{ ca }}" {% endif %} required>
+                    </div>
+                  <!-- end input ca -->
+                  <!-- input thal -->
+                    <div class="mb-0">
+                      <label for="thal" class="form-label">Thal</label>
+                      <input type="text" class="form-control h-50" id="thal" name="thal" {% if thal %} value="{{ thal }}" {% endif %} required>
+                    </div>
+                  <!-- end input thal -->
+                    <button class="btn btn-dark test_btn mt-4" type="submit">Test</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- end testing form -->
+        <!-- result classification -->
+        <div class="col-md-6">
+          <div class="card">
+              <h5 class="card-header">Input Parameter</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6 parameter">
+                  <h5>Parameter PSO</h5>
+                  <hr>
+                <!-- maximum epoch pso -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                        <label for="maxIterasi" class="form-label">Maximum Iterasi</label>
+                      </div>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control h-75" id="maxIterasi" name="maxIterasi" {% if maxIterasi %} value="{{ maxIterasi }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                <!-- end maximum epoch -->
+                <!-- jumlah partikel -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                        <label for="partikel" class="form-label">Jumlah Partikel</label>
+                      </div>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control h-75" id="partikel" name="partikel" {% if partikel %} value="{{ partikel }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                <!-- end jumlah partikel -->
+                <!-- koefisien W -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                        <label for="koefisien_w" class="form-label">Koefisien W</label>
+                      </div>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control h-75" id="koefisien_w" name="koefisien_w" {% if koefisien_w %} value="{{ koefisien_w }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                <!-- end koefisien w -->
+                <!-- koefisien c1 -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                        <label for="koefisien_c1" class="form-label">Koefisien C1</label>
+                      </div>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control h-75" id="koefisien_c1" name="koefisien_c1" {% if koefisien_c1 %} value="{{ koefisien_c1 }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                <!-- end koefisien c1 -->
+                <!-- koefisien c2 -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                        <label for="koefisien_c2" class="form-label">Koefisien C2</label>
+                      </div>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control h-75" id="koefisien_c2" name="koefisien_c2" {% if koefisien_c2 %} value="{{ koefisien_c2 }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                <!-- end koefisien c2 -->
+              </div>
+              <div class="col-md-6 parameter">
+                  <h5>Parameter LVQ</h5>
+                  <hr>
+                  <!-- maximum epoch lvq -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                          <label for="epoch_lvq" class="form-label">Maximum Epoch</label>
+                      </div>
+                      <div class="col-sm-7">
+                          <input type="text" class="form-control h-75" id="epoch_lvq" name="epoch_lvq" {% if epoch_lvq %} value="{{ epoch_lvq }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end maximum epoch -->
+                  <!-- Learning Rate -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                          <label for="learning_rate" class="form-label">Learning Rate(α)</label>
+                      </div>
+                      <div class="col-sm-7">
+                          <input type="text" class="form-control h-75" id="learning_rate" name="learning_rate" {% if learning_rate %} value="{{ learning_rate }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end Learning Rate -->
+                  <!-- Pengurang (α) -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                          <label for="pengurang_lr" class="form-label">Pengurang (α)</label>
+                      </div>
+                      <div class="col-sm-7">
+                          <input type="text" class="form-control h-75" id="pengurang_lr" name="pengurang_lr" {% if pengurang_lr %} value="{{ pengurang_lr }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end Pengurang (α) -->
+                  <!-- Minimum (α) -->
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col-sm-5">
+                          <label for="minimum_lr" class="form-label">Minimum (α)</label>
+                      </div>
+                      <div class="col-sm-7">
+                          <input type="text" class="form-control h-75" id="minimum_lr" name="minimum_lr" {% if minimum_lr %} value="{{ minimum_lr }}" {% endif %} required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end Minimum (α) -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <h5 class="card-header">Hasil Klasifikasi</h5>
+          <div class="card-body">
+            <h5>Klasifikasi Metode LVQ</h5>
+            <hr>
+            <p class="kelas">Kelas : {{ result_lvq }}</p>
+            <hr>
+            <h5>Klasifikasi Metode PSO-LVQ</h5>
+            <hr>
+            <p class="kelas">Kelas : {{ result_psoLvq }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- end result classification -->
+    </div>
+  </div>
+</main>
+    
+{% endblock %}
