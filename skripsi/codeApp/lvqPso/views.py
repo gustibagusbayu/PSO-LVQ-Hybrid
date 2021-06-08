@@ -372,7 +372,7 @@ def index(request):
 
 # <--- Bagian Training Bobot PSO-LVQ dan LVQ --->
 def training(maxIterasi, partikel, w, c1, c2, epoch_lvq, lr, pengurang_lr, minimum_lr):
-    data_train, data_test, label_train, label_test, row_data_train, row_data_test, column_data = read_data(r"D:/Kuliah/kuliah2020/semester 6/TUGAS AKHIR/CODE/TAku/skripsi/codeApp/static/data/data_normal.csv")
+    data_train, data_test, label_train, label_test, row_data_train, row_data_test, column_data = read_data(r"./static/data/data_normal.csv")
     row_weight = 2
     # training pso lvq
     weight_psoLvq, iteration_pso = train_psoLvq(data_train, label_train, row_data_train, column_data, maxIterasi, partikel, w, c1, c2, row_weight, epoch_lvq, lr, minimum_lr, pengurang_lr)
